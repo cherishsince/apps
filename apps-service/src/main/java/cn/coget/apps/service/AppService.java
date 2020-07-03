@@ -3,6 +3,7 @@ package cn.coget.apps.service;
 import cn.coget.apps.controller.AppPublishListRequest;
 import cn.coget.apps.supper.PageResult;
 import cn.coget.apps.vo.AppListVO;
+import cn.coget.apps.vo.AppPublishListVO;
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ public interface AppService {
      *
      * @return
      */
-    List<AppListVO> appList();
+    List<AppListVO> getRootApps();
 
-    List<AppListVO> appList2();
+    List<AppListVO> getChildApps(Long parentId);
 
     /**
      * app发布 - 列表
@@ -29,5 +30,5 @@ public interface AppService {
      * @param request
      * @return
      */
-    PageResult<AppListVO> appPublishList(AppPublishListRequest request);
+    PageResult<AppPublishListVO> appPublishList(AppPublishListRequest request);
 }

@@ -9,6 +9,7 @@ import cn.coget.apps.dataobject.AppPublishDO;
 import cn.coget.apps.service.AppService;
 import cn.coget.apps.supper.PageResult;
 import cn.coget.apps.vo.AppListVO;
+import cn.coget.apps.vo.AppPublishListVO;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -31,24 +32,26 @@ public class AppServiceImpl implements AppService {
     @Autowired
     private AppPublishDao appPublishDao;
 
-    @Override
-    public List<AppListVO> appList() {
-        List<AppDO> all = appDao.selectAll();
-        return AppServiceConvert.INSTANCE.convertToAppListVO(all);
+    public List<AppListVO> getRootApps() {
+        List<AppDO> rootApps = appDao.selectRootApps();
+        return AppServiceConvert.INSTANCE.convertToAppListVO(rootApps);
+    }
+
+    public List<AppListVO> getChildApps(Long parentId) {
+        // TODO: 2020/7/4 需要修改
+        List<AppDO> childApps = appDao.selectChildApps(parentId);
+        return AppServiceConvert.INSTANCE.convertToAppListVO(childApps);
     }
 
     @Override
-    public List<AppListVO> appList2() {
-        return null;
-    }
-
-    @Override
-    public PageResult<AppListVO> appPublishList(AppPublishListRequest request) {
+    public PageResult<AppPublishListVO> appPublishList(AppPublishListRequest request) {
+        // 分页查询
         IPage<AppPublishDO> page = appPublishDao.selectPage(
                 new Page<AppPublishDO>().setPages(request.getPageNo()).setSize(request.getPageSize()),
                 new LambdaQueryWrapper<>()
         );
-        List<AppListVO> appListVOList = AppServiceConvert.INSTANCE.convertToPublishListVO(page.getRecords());
-        return new PageResult<AppListVO>().setList(appListVOList).setTotal(page.getTotal());
+        // 转换 vo 返回
+        List<AppPublishListVO> appPublishVOList = AppServiceConvert.INSTANCE.convertToPublishListVO(page.getRecords());
+        return new PageResult<AppPublishListVO>().setList(appPublishVOList).setTotal(page.getTotal());
     }
 }

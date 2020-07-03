@@ -3,6 +3,7 @@ package cn.coget.apps.convert;
 import cn.coget.apps.dataobject.AppDO;
 import cn.coget.apps.dataobject.AppPublishDO;
 import cn.coget.apps.vo.AppListVO;
+import cn.coget.apps.vo.AppPublishListVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -21,5 +22,5 @@ public interface AppServiceConvert {
 
     List<AppListVO> convertToAppListVO(List<AppDO> apps);
 
-    List<AppListVO> convertToPublishListVO(List<AppPublishDO> publishDOList);
+    List<AppPublishListVO> convertToPublishListVO(List<AppPublishDO> publishDOList);
 }
