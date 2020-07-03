@@ -7,7 +7,7 @@ import cn.coget.apps.dao.AppPublishDao;
 import cn.coget.apps.dataobject.AppDO;
 import cn.coget.apps.dataobject.AppPublishDO;
 import cn.coget.apps.service.AppService;
-import cn.coget.apps.vo.supper.PageResult;
+import cn.coget.apps.supper.PageResult;
 import cn.coget.apps.vo.AppListVO;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -49,6 +49,6 @@ public class AppServiceImpl implements AppService {
                 new LambdaQueryWrapper<>()
         );
         List<AppListVO> appListVOList = AppServiceConvert.INSTANCE.convertToPublishListVO(page.getRecords());
-        return new PageResult<>().setList(appListVOList).setTotal(page.getTotal());
+        return new PageResult<AppListVO>().setList(appListVOList).setTotal(page.getTotal());
     }
 }

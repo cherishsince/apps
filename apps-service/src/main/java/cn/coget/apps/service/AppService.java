@@ -1,7 +1,7 @@
 package cn.coget.apps.service;
 
 import cn.coget.apps.controller.AppPublishListRequest;
-import cn.coget.apps.vo.supper.PageResult;
+import cn.coget.apps.supper.PageResult;
 import cn.coget.apps.vo.AppListVO;
 
 import java.util.List;

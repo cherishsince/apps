@@ -1,4 +1,4 @@
-package cn.coget.apps.vo.supper;
+package cn.coget.apps.supper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.util.Assert;

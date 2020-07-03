@@ -1,6 +1,6 @@
 package cn.coget.apps.controller;
 
-import cn.coget.apps.vo.supper.CommonResult;
+import cn.coget.apps.supper.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

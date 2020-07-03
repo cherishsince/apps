@@ -1,6 +1,6 @@
 package cn.coget.apps.controller;
 
-import cn.coget.apps.vo.supper.PageParam;
+import cn.coget.apps.supper.PageParam;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

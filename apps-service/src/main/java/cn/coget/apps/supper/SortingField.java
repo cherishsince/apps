@@ -1,4 +1,4 @@
-package cn.coget.apps.vo.supper;
+package cn.coget.apps.supper;
 
 /**
  * 排序字段 DTO

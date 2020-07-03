@@ -1,4 +1,4 @@
-package cn.coget.apps.vo.supper;
+package cn.coget.apps.supper;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
