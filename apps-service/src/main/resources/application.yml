@@ -1,0 +1,48 @@
+
+# default config
+
+spring:
+  # 数据源配置项
+  datasource:
+    druid:
+      # JDBC 配置(驱动类自动从url的mysql识别,数据源类型自动识别)
+      url: jdbc:mysql://127.0.0.1:3306/apps?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 2
+      max-active: 20
+      min-idle: 1
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      #打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: SELECT 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+
+# MyBatis Plus 配置项
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: cn.coget.**.dataobject
+
+# logger
+logging:
+  level:
+    cn.coget: DEBUG
+    org.hibernate: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
