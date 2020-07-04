@@ -3,7 +3,7 @@
  *
  * @type {string}
  */
-var api = 'http://127.0.0.1:8080';
+var api = 'https://coget.cn/apps-api';
 var timer = null;
 function getParams(value) {
 	var query = window.location.search.substring(1);
