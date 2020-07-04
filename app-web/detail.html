@@ -26,7 +26,7 @@
 <script>
     var httpUrl = api + '/users/app/publishList';
     var gname = unescape(getParams('gname'));
-    var projectName = unescape(getParams('projectname'));
+    var appId = unescape(getParams('appId'));
     loading(true);
     ajax({
         url: httpUrl,
@@ -34,13 +34,13 @@
         dataType: 'json',
         contentType: 'application/json',
         data: {
-            appId: projectName,
+            appId: appId,
             pageNo: 1,
             pageSize: 100
         },
         success: function (res) {
             loading(false);
-            if (res.code == 0) {
+            if (res.code === 0) {
                 try {
                     readyData(res.data.list);
                 } catch (e) {
@@ -72,7 +72,7 @@
             item = {
                 logo: item.logo,
                 name: item.name,
-                projectName: item.name + '(' + item.tags + ')',
+                projectName: item.name + '[' + item.tags + ']',
                 versionName: item.publish.version,
                 packageSize: item.publish.packageSize,
                 updateTime: item.publish.createdTime,

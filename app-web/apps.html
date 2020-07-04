@@ -13,7 +13,7 @@
 <body>
 <div class="content" id="content">
     <div class="top" style="width: 750px; left: 50%; margin-left: -375px;">
-        <a class="back" href="./index.html">返回</a>Apps
+        <a class="back" href="./index.html">返回</a>软件列表
     </div>
     <div class="soft" id="group">
 
@@ -27,12 +27,14 @@
 <script>
     var httpUrl = api + '/users/app/apps2';
     var gname = unescape(getParams('gname'));
+    var appId = unescape(getParams('appId'));
+    window.title = gname;
     loading(true);
     ajax({
         url: httpUrl,
         method: 'GET',
         dataType: 'json',
-        data: {parentId: gname},
+        data: {parentId: appId},
         success: function (res) {
             loading(false);
             if (res.code == 0) {
@@ -51,7 +53,6 @@
             noData();
             return;
         }
-        console.info(data);
         var group = document.getElementById('group');
         var can = document.createElement('div');
         var obj = {};
@@ -75,17 +76,15 @@
                 projectId: item.id,
                 logo: item.logo,
                 group: item.name,
-                note: item.subject,
+                note: item.publish.subject,
                 projectName: item.name,
                 platform: window.isIOS(item.tags) ? 1 : -1,
-                subtitle: item.publish.subject,
                 lastVersion: item.publish.version,
                 updateTime: item.publish.createdTime,
                 appUrl: addr[0],
                 plist: addr[1],
             });
         }
-        console.log(obj);
         for (var child in obj) {
             item = obj[child];
             html += '<div class="type">' + child + '</div>';
@@ -114,7 +113,7 @@
 
                 if (node.appUrl) {
                     console.log(node.appUrl);
-                    if (node.platform == 1) {
+                    if (node.platform === 1) {
                         url = 'itms-services://?action=download-manifest&url=' + node.plist;
                     } else {
                         url = node.appUrl;
@@ -131,7 +130,7 @@
     }
 
     function openPage(name) {
-        window.location.href = './detail.html?projectname=' + escape(name) + '&gname=' + escape(gname);
+        window.location.href = './detail.html?projectname=' + escape(name) + '&appId=' + escape(name);
     }
 </script>
 </body>

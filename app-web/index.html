@@ -31,7 +31,7 @@
 	    success :function (res) {
 			console.log(res);
 	    	loading(false);
-	    	if(res.code == 0){
+	    	if(res.code === 0){
 				var convert = res.data.map(item => {
 					return {
 						id: item.id,
@@ -57,15 +57,16 @@
 		var html = '';
 		for(var i=0;i<data.length;i++){
 			var item = data[i];
-			html += '<div class="item" onclick=openPage("'+item.id+'")>'+
+			html += '<div class="item" onclick=openPage("' + item.id + "," + item.group + '")>'+
 					'<img class="img" src="'+item.logo+'" />'+
 					'<span>'+item.group+'</span>'+
 				'</div>';
 		}
 		list.innerHTML = html;
 	}
-	function openPage(name){
-		window.location.href = './apps.html?gname=' + escape(name);
+	function openPage(data){
+		var datas = window.resolverPackageAddress(data);
+		window.location.href = './apps.html?gname=' + datas[1] + '&appId=' + datas[0];
 	}
 </script>
 </body></html>
