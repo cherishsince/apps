@@ -16,15 +16,15 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@TableName("app")
+@TableName("app_publish")
 public class AppPublishDO extends BaseDO {
 
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
     /**
      * app编号
      */
-    private Long appId;
+    private Integer appId;
     /**
      * 包大小（MB单位）如：12.03MB
      */
@@ -46,7 +46,7 @@ public class AppPublishDO extends BaseDO {
      */
     private String subject;
     /**
-     * 描述
+     * 更新信息
      */
-    private String describe;
+    private String updateInformation;
 }

@@ -19,10 +19,10 @@ import java.util.List;
 public interface AppDao extends BaseMapper<AppDO> {
 
     default List<AppDO> selectRootApps() {
-        return this.selectList(new LambdaQueryWrapper<AppDO>().eq(AppDO::getParentId, null));
+        return this.selectList(new LambdaQueryWrapper<AppDO>().isNull(AppDO::getParentId));
     }
 
-    default List<AppDO> selectChildApps(Long parentId) {
+    default List<AppDO> selectChildApps(Integer parentId) {
         return this.selectList(new LambdaQueryWrapper<AppDO>().eq(AppDO::getParentId, parentId));
     }
 }

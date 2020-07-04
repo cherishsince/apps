@@ -2,6 +2,7 @@ package cn.coget.apps.service;
 
 import cn.coget.apps.controller.AppPublishListRequest;
 import cn.coget.apps.supper.PageResult;
+import cn.coget.apps.vo.AppList2VO;
 import cn.coget.apps.vo.AppListVO;
 import cn.coget.apps.vo.AppPublishListVO;
 
@@ -22,7 +23,13 @@ public interface AppService {
      */
     List<AppListVO> getRootApps();
 
-    List<AppListVO> getChildApps(Long parentId);
+    /**
+     * app - 列表子级
+     *
+     * @param parentId
+     * @return
+     */
+    List<AppList2VO> getChildApps(Integer parentId);
 
     /**
      * app发布 - 列表
@@ -30,5 +37,5 @@ public interface AppService {
      * @param request
      * @return
      */
-    PageResult<AppPublishListVO> appPublishList(AppPublishListRequest request);
+    PageResult<AppPublishListVO> publishList(AppPublishListRequest request);
 }

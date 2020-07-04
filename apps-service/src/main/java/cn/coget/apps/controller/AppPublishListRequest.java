@@ -1,6 +1,7 @@
 package cn.coget.apps.controller;
 
 import cn.coget.apps.supper.PageParam;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -13,4 +14,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class AppPublishListRequest extends PageParam {
+
+    @ApiModelProperty("app编号")
+    private Integer appId;
 }

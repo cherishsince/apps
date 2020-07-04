@@ -15,10 +15,10 @@ import lombok.experimental.Accessors;
 public class AppListVO {
 
     @ApiModelProperty("编号")
-    private Long id;
+    private Integer id;
 
     @ApiModelProperty("父类id")
-    private Long parentId;
+    private Integer parentId;
 
     @ApiModelProperty("app 名字")
     private String name;
@@ -27,5 +27,5 @@ public class AppListVO {
     private String logo;
 
     @ApiModelProperty("app 类型：Android、iOS")
-    private String type;
+    private String tags;
 }

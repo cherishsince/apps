@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-public class AppPublishListVO implements Serializable {
+public class AppList2VO implements Serializable {
 
     @ApiModelProperty("编号")
     private Integer id;

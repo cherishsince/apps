@@ -20,11 +20,15 @@ import lombok.experimental.Accessors;
 public class AppDO extends BaseDO {
 
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
     /**
      * 父类id
      */
     private Long parentId;
+    /**
+     * 记录最后一个更新记录，用于更新反查
+     */
+    private Integer lastAppPublishId;
     /**
      * app 名字
      */

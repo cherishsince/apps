@@ -26,6 +26,10 @@ spring:
       time-between-eviction-runs-millis: 60000
       #配置一个连接在池中最小生存的时间，单位是毫秒
       min-evictable-idle-time-millis: 300000
+  # jackson 配置
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
 
 # MyBatis Plus 配置项
 mybatis-plus:
