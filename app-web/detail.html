@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- saved from url=(0114)https://test.mc.cn/version.html?projectname=%u7C73%u6A59%uFF08%u5F00%u53D1%u7248%uFF09%5BiOS%5D&gname=%u7C73%u6A59 -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,initial-scale=.5,maximum-scale=.5,minimum-scale=.5,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="https://test.mc.cn/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./js/css.css">
+    <title>米橙</title>
+</head>
+<body>
+<div class="content" id="content">
+    <div class="top">
+        <a class="back" href="javascript:void(0)" onclick="goBack()">返回</a>版本列表
+    </div>
+    <div class="version" id="version"></div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.min.js"></script>
+<script src="./js/url.js"></script>
+<script src="./js/ajax.js"></script>
+<script src="./js/public.js"></script>
+<script>
+    var httpUrl = api + '/users/app/publishList';
+    var gname = unescape(getParams('gname'));
+    var projectName = unescape(getParams('projectname'));
+    loading(true);
+    ajax({
+        url: httpUrl,
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: {
+            appId: projectName,
+            pageNo: 1,
+            pageSize: 100
+        },
+        success: function (res) {
+            loading(false);
+            if (res.code == 0) {
+                try {
+                    readyData(res.data.list);
+                } catch (e) {
+                    console.error(e)
+                }
+            } else {
+                errorFun(res.message);
+            }
+        },
+        error: function (err) {
+            errorFun(err);
+        },
+    });
+
+    function readyData(data) {
+        if (!data.length) {
+            noData();
+            return;
+        }
+        var version = document.getElementById('version');
+        var html = '';
+        var className = '';
+        var item = null;
+        var list = data;
+        var url = '';
+        for (var i = 0; i < list.length; i++) {
+            item = list[i];
+            var addr = window.resolverPackageAddress(item.publish.packageAddress);
+            item = {
+                logo: item.logo,
+                name: item.name,
+                projectName: item.tags,
+                versionName: item.publish.version,
+                packageSize: item.publish.packageSize,
+                updateTime: item.publish.createdTime,
+                note: item.publish.subject,
+                updateDetail: item.publish.updateInformation,
+                platform: window.isIOS(item.tags) ? 1 : -1,
+                appUrl: addr[0],
+                plist: addr[1],
+            };
+
+            html += '<div class="list">' +
+                '<div class="dic">' +
+                '<img class="icon" src="' + item.logo + '" />' +
+                '<div class="info">' +
+                '<div class="name">' + item.projectName + '</div>' +
+                '<div class="vers">' + item.versionName + '<span class="line"> | </span>' + fileFormat(item.packageSize) +
+                '</div>' +
+                '<div class="vers">' + timeFormat(item.updateTime) + '</div></div></div>';
+            if (item.note) {
+                html += '<div class="tips"><span class="tips_p">' + htmlFormat(item.note) + '</span></div>';
+            }
+            if (item.updateDetail) {
+                html += '<div class="tips"><span class="tips_p">' + htmlFormat(item.updateDetail) +
+                    '</span></div>';
+            }
+            if (i == 0) {
+                className = 'btn active';
+            } else {
+                className = 'btn';
+            }
+
+            if (item.appUrl) {
+                if (item.platform == 1) {
+                    url = 'itms-services://?action=download-manifest&url=' + item.plist;
+                } else {
+                    url = item.appUrl;
+                }
+                html += '<a href="' + url + '" class="' + className + '" >安装</a></div>';
+            } else {
+                html += '<a href="' + url + '" class="' + className + '" >22安装</a></div>';
+            }
+        }
+        version.innerHTML = html;
+    }
+
+
+    function goBack() {
+        // window.location.href = './soft.html?gname=' + escape(gname);
+        window.history.back();
+    }
+</script>
+</body></html>

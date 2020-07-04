@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://test.mc.cn/soft.html?gname=%u7C73%u6A59 -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=.5,maximum-scale=.5,minimum-scale=.5,viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="https://test.mc.cn/favicon.png">
+    <link rel="stylesheet" type="text/css" href="./js/css.css">
+    <title>米橙</title>
+</head>
+<body>
+<div class="content" id="content">
+    <div class="top" style="width: 750px; left: 50%; margin-left: -375px;">
+        <a class="back" href="./index.html">返回</a>Apps
+    </div>
+    <div class="soft" id="group">
+
+    </div>
+</div>
+
+<script src="./js/jquery-1.8.2.min.js"></script>
+<script src="./js/url.js"></script>
+<script src="./js/ajax.js"></script>
+<script src="./js/public.js"></script>
+<script>
+    var httpUrl = api + '/users/app/apps2';
+    var gname = unescape(getParams('gname'));
+    loading(true);
+    ajax({
+        url: httpUrl,
+        method: 'GET',
+        dataType: 'json',
+        data: {parentId: gname},
+        success: function (res) {
+            loading(false);
+            if (res.code == 0) {
+                readyData(res.data);
+            } else {
+                errorFun(res.message);
+            }
+        },
+        error: function (err) {
+            errorFun(err);
+        },
+    })
+
+    function readyData(data) {
+        if (!data.length) {
+            noData();
+            return;
+        }
+        console.info(data);
+        var group = document.getElementById('group');
+        var can = document.createElement('div');
+        var obj = {};
+        var item = null;
+        var url = '';
+        var html = '';
+
+        for (var i = 0; i < data.length; i++) {
+            item = data[i];
+            var tags = item.tags;
+            if (!obj[tags]) {
+                obj[tags] = [];
+            }
+
+            if (!item.publish) {
+                item.publish = {};
+            }
+
+            var addr = window.resolverPackageAddress(item.publish.packageAddress);
+            obj[tags].push({
+                projectId: item.id,
+                logo: item.logo,
+                group: item.name,
+                note: item.subject,
+                projectName: item.name,
+                platform: window.isIOS(item.tags) ? 1 : -1,
+                subtitle: item.publish.subject,
+                lastVersion: item.publish.version,
+                updateTime: item.publish.createdTime,
+                appUrl: addr[0],
+                plist: addr[1],
+            });
+        }
+        console.log(obj);
+        for (var child in obj) {
+            item = obj[child];
+            html += '<div class="type">' + child + '</div>';
+            for (var i = 0; i < item.length; i++) {
+                var node = item[i];
+                html += '<div class="info">' +
+                    '<div onClick=openPage("' + node.projectId + '")>' +
+                    '<img class="icon" src="' + node.logo + '" />' +
+                    '<div class="dic">' +
+                    '<p class="name">' + node.group + '（' + edition[node.edition || 4] + '）</p>';
+                if (node.note) {
+                    html += '<p class="load" >' + node.note + '</p>';
+                } else {
+                    html += '<p class="none" >无备注</p>';
+                }
+                var lastVersion = '';
+                if (node.lastVersion) {
+                    lastVersion = '<span class="line">|</span>' + node.lastVersion;
+                }
+
+                if (node.updateTime) {
+                    html += '<p class="update">' + timeFormat(node.updateTime) + ' 更新' + lastVersion + '</p></div></div>';
+                } else {
+                    html += '<p class="update">暂无更新</p></div></div>';
+                }
+
+                if (node.appUrl) {
+                    console.log(node.appUrl);
+                    if (node.platform == 1) {
+                        url = 'itms-services://?action=download-manifest&url=' + node.plist;
+                    } else {
+                        url = node.appUrl;
+                    }
+                    html += '<a class="install" href="' + url + '">安装</a></div>';
+                } else {
+                    console.log('无安装包');
+                    html += '<b class="uninstall" href="javascript:">安装</b></div>';
+                }
+
+            }
+        }
+        group.innerHTML += html;
+    }
+
+    function openPage(name) {
+        window.location.href = './detail.html?projectname=' + escape(name) + '&gname=' + escape(gname);
+    }
+</script>
+</body>
+</html>

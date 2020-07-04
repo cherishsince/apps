@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://test.mc.cn/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width,initial-scale=.5,maximum-scale=.5,minimum-scale=.5,viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" type="image/x-icon" href="https://test.mc.cn/favicon.png">
+	<link rel="stylesheet" type="text/css" href="js/css.css">
+	<title>米橙</title>
+</head>
+<body>
+	<div class="content" id="content">
+		<div class="top" style="width: 750px; left: 50%; margin-left: -375px;">Apps</div>
+		<div class="list" id="list">
+		</div>
+	</div>
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/url.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/public.js"></script>
+<script>
+	var httpUrl = api + '/users/app/apps';
+	loading(true);
+	ajax({
+		url:httpUrl,
+		method : 'GET',
+	    dataType : 'json',
+	    success :function (res) {
+			console.log(res);
+	    	loading(false);
+	    	if(res.code == 0){
+				var convert = res.data.map(item => {
+					return {
+						id: item.id,
+						group: item.name,
+						logo: item.logo,
+					}
+				});
+	    		readyData(convert);
+	    	}else{
+	    		errorFun(res.message);
+	    	}
+	    },
+	    error : function (err) {
+	    	errorFun(err);
+	    },
+	})
+	function readyData( data ){
+		if(!data.length){
+			noData();
+			return;
+		}
+		var list = document.getElementById('list');
+		var html = '';
+		for(var i=0;i<data.length;i++){
+			var item = data[i];
+			html += '<div class="item" onclick=openPage("'+item.id+'")>'+
+					'<img class="img" src="'+item.logo+'" />'+
+					'<span>'+item.group+'</span>'+
+				'</div>';
+		}
+		list.innerHTML = html;
+	}
+	function openPage(name){
+		window.location.href = './apps.html?gname=' + escape(name);
+	}
+</script>
+</body></html>

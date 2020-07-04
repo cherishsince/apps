@@ -1,0 +1,290 @@
+html,body{
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none
+}
+*{padding:0;margin:0; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+body{padding:0;margin:0; background: #eee; color: #333; font: 28px/1 "SF Pro Text","SF Pro Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+padding-bottom: constant(safe-area-inset-bottom); padding-bottom: env(safe-area-inset-bottom);-webkit-text-size-adjust: none;}
+a{
+	text-decoration: none;
+	color: #333;
+}
+/*首页*/
+.content {
+	margin: 0 auto;
+	padding: 88px 0 108px;
+	position: relative;
+}
+.top{
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-size: 28px;
+	font-weight: 400;
+	color:#333;
+	height: 88px;
+	line-height: 88px;
+	background-color: #fff;	
+	box-shadow: 0 4px 10px rgba(0,0,0,.08);
+    border-bottom: 1px solid #f4f4f4;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:99;
+}
+.list{
+	overflow: hidden;
+	padding:0 20px 50px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.item{
+	width: calc(50% - 10px);
+    overflow: hidden;
+    float: left;
+    padding: 28px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    line-height: 1.75;
+    box-sizing: border-box;
+}
+.item:nth-child(2n){
+	margin-left: 20px;
+}
+.link{
+	padding: 28px 20px;
+}
+.img{
+	display: block;
+	width: 180px;
+	height: 180px;
+	margin: 0 auto 20px;
+}
+
+
+/*软件*/
+.soft{ overflow: hidden;}
+.back{
+		width: 160px;
+		height: 88px;
+		position: absolute;
+		top:0;
+		left: 0;
+	}
+	.type{
+		height: 80px;
+		line-height: 80px;
+		text-indent: 40px;
+		margin-top: 20px;
+		font-size: 28px;
+		overflow: hidden;
+	}
+	.soft .info{
+		padding: 28px 20px;
+		margin-bottom: 1px;
+		position: relative;
+		background: #fff;
+		border-radius: 0;
+	}
+	.icon{
+		width: 120px;
+		height: 120px;
+		border-radius: 27px;
+		float: left;
+	}
+	.info .dic{
+		padding-left:140px;
+	}
+	.name{
+		font-size: 28px;
+		color: #000;
+		line-height: 1.7;
+		display: block;
+	}
+	.load{
+		color: #ff8000;
+		font-size: 22px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		line-height: 1.75;
+		display: block;
+	}
+	.none{
+		    font-size: 22px;
+		    color: #aaa;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+			line-height: 1.75;
+	}
+	.update{
+		font-size: 22px;
+		color: #888;
+		line-height: 1.75;
+		display: block;
+	}
+	.line{
+		color: #ddd;
+		margin: 0 10px;
+	}
+	.install{
+		    width: 114px;
+		    height: 54px;
+			line-height: 54px;
+		    border: 1px solid #f80;
+		    border-radius: 10px;
+		    position: absolute;
+		    right: 20px;
+		    top: 63px;
+			color: #f80;
+			text-align: center;
+			z-index: 3;
+			font-size: 28px;
+	}
+	.uninstall {
+		width: 114px;
+		height: 54px;
+		line-height: 54px;
+		border: 1px solid rgba(0, 0, 0, 0.37);
+		border-radius: 10px;
+		position: absolute;
+		right: 20px;
+		top: 63px;
+		color: rgba(0, 0, 0, 0.37);
+		text-align: center;
+		z-index: 3;
+		font-size: 28px;
+	}
+	/*软件版本*/
+	.version{
+		padding:20px 0;
+		margin: 0 auto;
+	}
+	.version .dic{
+		overflow: hidden;
+	}
+	.version .list{
+		padding: 28px 20px;
+		background: #fff;
+		border-radius: 10px;
+		margin-bottom: 20px;
+		color: #333;
+		overflow: hidden;
+	}
+	.version .icon{
+		float: left;
+		width: 120px;
+		height: 120px;
+	}
+	.version .info{
+		padding-left:140px;
+	}
+	.version .name{
+		line-height: 1.7;
+		font-size: 28px;
+		color: #000;
+	}
+	.version .vers{
+		font-size: 22px;
+		-webkit-text-size-adjust: none;
+		color: #aaa;
+		line-height: 1.5;
+	}
+	.version .line{
+		color: #aaa;
+		margin: 0 10px;
+	}
+	.version .time{
+		font-size: 22px;
+		-webkit-text-size-adjust: none;
+		color: #aaa;
+		line-height: 1.5;
+	}
+	.version .tips{
+		text-align: left;
+		font-size: 22px;
+		line-height: 1.5;
+		-webkit-text-size-adjust: none;
+		color: #aaa;
+		padding-top: 20px;
+	}
+	.version .btn{
+		
+		display: block;
+		width: 100%;
+		height: 88px;
+		line-height: 88px;
+		text-align: center;
+		border-radius: 10px;
+		margin-top: 20px;
+		font-size: 28px;
+		color: #333;
+		background: #f4f4f4;
+	}
+	.version .active{
+		background-color: #00b916;
+		color: #fff;
+	}
+	.version .btn:after{
+		border-color: #f4f4f4;
+	}
+	.version .tips_p{
+		display: block;
+		font-size: 22px;
+		line-height: 1.5;
+		min-height: 33px;
+	}
+	.empty{
+		width:200px;
+		height: 200px;
+		position: absolute;
+		top:50%;
+		left:50%;
+		margin-left: -100px;
+		margin-top: -100px;
+	}
+	.empty img{
+		display: block;
+		width: 100%;
+	}
+	.mark{
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			z-index:2;
+			position: fixed;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+		}
+		.loading{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			border:3px solid #ff8000;
+			top:50%;
+			left:50%;
+			margin: -40px 0 0 -40px;
+			border-right-color: transparent;
+			animation: wait .5s ease-in-out infinite;
+			position: absolute;
+		}
+		@keyframes wait{
+			from{
+				transform: rotate(0deg);
+			}
+			to{
+				transform: rotate(360deg);
+			}
+		}
+@media screen and (min-width: 1280px) {
+    .content{
+    	max-width: 750px;
+    }
+}
