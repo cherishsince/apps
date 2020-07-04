@@ -59,7 +59,10 @@ public class AppServiceImpl implements AppService {
         Map<Integer, AppPublishDO> publishMap = Collections.emptyMap();
         // 可能都是 root 级别的 app
         if (!CollectionUtils.isEmpty(publishIds)) {
-            List<AppPublishDO> publishList = appPublishDao.selectBatchIds(publishIds);
+            List<AppPublishDO> publishList = appPublishDao.selectList(
+                    new LambdaQueryWrapper<AppPublishDO>()
+                            .in(AppPublishDO::getId, publishIds)
+            );
             publishMap = publishList.stream().collect(Collectors.toMap(AppPublishDO::getId, o -> o));
         }
         // 转换vo
@@ -88,7 +91,9 @@ public class AppServiceImpl implements AppService {
         // 分页查询
         IPage<AppPublishDO> page = appPublishDao.selectPage(
                 new Page<AppPublishDO>().setPages(request.getPageNo()).setSize(request.getPageSize()),
-                new LambdaQueryWrapper<AppPublishDO>().eq(AppPublishDO::getAppId, request.getAppId())
+                new LambdaQueryWrapper<AppPublishDO>()
+                        .eq(AppPublishDO::getAppId, request.getAppId())
+                        .orderByDesc(AppPublishDO::getId)
         );
         // 转换 vo 返回
         List<AppPublishListVO> result = new ArrayList<>(page.getRecords().size());

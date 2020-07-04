@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * App Dao
- *
+ * <p>
  * author: sin
  * time: 2020/7/3 11:54 下午
  */
@@ -19,10 +19,18 @@ import java.util.List;
 public interface AppDao extends BaseMapper<AppDO> {
 
     default List<AppDO> selectRootApps() {
-        return this.selectList(new LambdaQueryWrapper<AppDO>().isNull(AppDO::getParentId));
+        return this.selectList(
+                new LambdaQueryWrapper<AppDO>()
+                        .isNull(AppDO::getParentId)
+                        .orderByAsc(AppDO::getSort)
+        );
     }
 
     default List<AppDO> selectChildApps(Integer parentId) {
-        return this.selectList(new LambdaQueryWrapper<AppDO>().eq(AppDO::getParentId, parentId));
+        return this.selectList(
+                new LambdaQueryWrapper<AppDO>()
+                        .eq(AppDO::getParentId, parentId)
+                        .orderByAsc(AppDO::getSort)
+        );
     }
 }

@@ -44,6 +44,10 @@ public class AppDO extends BaseDO {
      */
     private String tags;
     /**
+     * 排序
+     */
+    private Integer sort;
+    /**
      * 描述
      */
     private String memo;
