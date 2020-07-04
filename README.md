@@ -1,10 +1,14 @@
 
-# <img src="docs/img/app-128.svg" width="80" height="80">
+# <img src="docs/img/app-128.svg" width="80" height="80"> App Service
 
 
 **Apps** 是一个内部的 **应用商店** ，主要面向于公司内部，或者部门的 App，便于 **测试**、**产品**、**领导** 下载，这样也更便于应用的管理，也可以免去你在风控的敲代码的时候，**小哥给我装个测试环境的包**，😝😝😝😝。
 
 浏览地址：[https://coget.cn/apps/](https://coget.cn/apps/)
+
+#### web 界面功能
+
+![类图](http://f100.coget.cn/apps/web-demonstration.gif)
 
 #### 计划
 
@@ -15,16 +19,6 @@
 - dockerfile：便于企业快速部署（**未完成**）。
 - 轻便型：可以将 MySql 换掉，使用 xxx 可以更轻便（**未完成**）。
 - 数据：数据备份和迁移方案（**未完成**）。
-
-
-
-#### web 界面功能
-
-
-
-![类图](http://f100.coget.cn/apps/web-demonstration.gif)
-
-
 
 
 
