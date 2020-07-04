@@ -5,6 +5,8 @@
 
 浏览地址：[https://coget.cn/apps/](https://coget.cn/apps/)
 
+欢迎大家一起参与：微信(sin903280167)
+
 ## web 界面功能
 
 ![类图](http://f100.coget.cn/apps/web-demonstration.gif)
