@@ -31,6 +31,9 @@ public class AppPublishDO extends BaseDO {
     private Double packageSize;
     /**
      * 安装包地址
+     *
+     * - ios：地址 ',' 隔开 如：xxx.ipa,xxx.plist
+     * - Android：直接是地址
      */
     private String packageAddress;
     /**
