@@ -3,8 +3,6 @@
  *
  * @type {string}
  */
-
-// var api = 'https://test-q.mc.cn/restful';
 var api = 'http://127.0.0.1:8080';
 var edition = {
 	0: '无',
