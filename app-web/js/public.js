@@ -4,13 +4,6 @@
  * @type {string}
  */
 var api = 'http://127.0.0.1:8080';
-var edition = {
-	0: '无',
-	1: '开发版',
-	2: '生产版',
-	3: '预生产版',
-	4:'预览版'
-}
 var timer = null;
 function getParams(value) {
 	var query = window.location.search.substring(1);
