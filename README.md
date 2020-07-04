@@ -1,4 +1,4 @@
 # App Service
 
-![类图](docs/img/web-demonstration.gif)
+![类图](https://f100.coget.cn/apps/web-demonstration.gif)
 
