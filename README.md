@@ -9,7 +9,7 @@
 
 ## web 界面功能
 
-![类图](http://f100.coget.cn/apps/web-demonstration.gif)
+![类图](docs/img/web-demonstration.gif)
 
 ## 计划
 
