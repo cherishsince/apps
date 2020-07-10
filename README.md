@@ -14,7 +14,7 @@
 
 ## web 界面功能
 
-![类图](http://f100.coget.cn/apps/web-demonstration.gif)
+![类图](docs/img/web-demonstration.gif)
 
 
 
@@ -63,7 +63,7 @@
 - app-admins: 管理app上传，下载使用（**未完成，添加数据只能操作数据库**）持续更新中。
 
 - dockerfile：便于企业快速部署（**未完成**）。
-- 轻便型：可以将 MySql 换掉，使用 xxx 可以更轻便（**未完成**）。
+- 轻便型：可以将 MySql 换掉，使用 H2 Database 可以更轻便（**未完成**）。
 - 数据：数据备份和迁移方案（**未完成**）。
 - app-web: 可以优化，使用 svelte实现，去Gitee拿VIP(快来个大哥支持一下)
 
