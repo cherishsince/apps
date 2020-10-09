@@ -98,6 +98,14 @@
                 <version>${swagger-bootstrap-ui.version}</version>
             </dependency>
 
+            <!-- db2 -->
+            <!-- https://mvnrepository.com/artifact/com.ibm.db2/jcc -->
+            <dependency>
+                <groupId>com.ibm.db2</groupId>
+                <artifactId>jcc</artifactId>
+                <version>11.5.4.0</version>
+            </dependency>
+
             <!-- DB 相关 -->
             <dependency>
                 <groupId>mysql</groupId>
