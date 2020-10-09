@@ -98,12 +98,13 @@
                 <version>${swagger-bootstrap-ui.version}</version>
             </dependency>
 
-            <!-- db2 -->
-            <!-- https://mvnrepository.com/artifact/com.ibm.db2/jcc -->
+            <!-- h2database -->
+            <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
             <dependency>
-                <groupId>com.ibm.db2</groupId>
-                <artifactId>jcc</artifactId>
-                <version>11.5.4.0</version>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.200</version>
+                <scope>test</scope>
             </dependency>
 
             <!-- DB 相关 -->
