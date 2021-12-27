@@ -8,8 +8,6 @@
 
 > 浏览地址：[https://coget.cn/apps/](https://coget.cn/apps/)
 
-> 欢迎一起参与：微信(sin903280167)
-
 
 
 ## web 界面功能
